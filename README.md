@@ -1,6 +1,8 @@
 # News Quiz
 
-A wordpress wrapper around [Mother Jones' News Quiz](https://github.com/motherjones/newsquiz).
+A wordpress plugin wrapper around [Mother Jones' News Quiz] (https://github.com/motherjones/newsquiz).
+
+**Note:** This plugin has not yet been released.
 
 ## Usage
 
