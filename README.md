@@ -1,6 +1,6 @@
 # News Quiz
 
-A wordpress wrapper around [Mother Jone's News Quiz](https://github.com/motherjones/newsquiz).
+A wordpress wrapper around [Mother Jones' News Quiz](https://github.com/motherjones/newsquiz).
 
 ## Usage
 
