@@ -1,0 +1,8 @@
+## Unit Testing ##
+
+.travis.yml
+bin
+
+# We could probably include this one, but wp-cli makes it for us.
+tests/bootstrap.php
+
