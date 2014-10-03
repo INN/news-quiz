@@ -19,31 +19,39 @@
  */
 function quiz_shortcode( $atts ){
 
-	/* Setup: Enqueue previously registered scripts. */
+	/* Setup: Enqueue previously registered scripts.*/
 
 	wp_enqueue_style(  'quiz_style' );
 	wp_enqueue_script( 'quiz_js' );
 
 	$ret  = "";
-
-	/* $attrs printing
 	
-	$ret .= "<pre>";
-	$ret .= print_r($atts,true);
-	$ret .= "</pre>";
- 	*/
-
  	/* Return: A container for the quiz to load in. */
 
 	$key = $atts['key'];
 	$align = $atts['align'] ? $atts['align'] : 'alignleft';
+	$width = $atts['width'] ? $atts['width'] : '300';
 
+	$ret .= "<div class='largo-interactive largo-quiz $align' style='width:{$width}px'>";
+
+	if($atts['description'] || $atts['title']) {
+
+		$ret .= "<header class='largo-quiz-header'>";
+
+		if($atts['title'])
+			$ret .= "<h3 class='largo-quiz-title'>" . $atts['title'] . "</h3>";
+		if($atts['description'])
+			$ret .= "<p class='largo-quiz-desc'>" . $atts['description'] . "</p>";
+	
+		$ret .= "</header>";
+
+	}
 	$ret .= "<div ";
 		$ret .= "id='quizcontainer' ";
-		$ret .= "class='$align quizbox'";
-		$ret .= "style='width:300px'";
+		$ret .= "class='quizbox'";
 		$ret .= "data-key='$key' ";
 	$ret .= "></div>";
+	$ret .= "</div>";
 	
 	return $ret;
 
