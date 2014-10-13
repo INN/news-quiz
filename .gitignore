@@ -6,3 +6,7 @@ bin
 # We could probably include this one, but wp-cli makes it for us.
 tests/bootstrap.php
 
+# Sublime text files
+
+*.sublime-project
+*.sublime-workspace

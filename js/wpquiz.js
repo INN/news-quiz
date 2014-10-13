@@ -5,8 +5,9 @@
  */
 jQuery(document).ready(function() {
 
-	jQuery(".quizbox").each( function() {
+	jQuery(".largo-interactive-quizbox").each( function() {
 		jQuery(this).quiz(jQuery(this).attr('data-key')); 
+		console.log('loading...');
 	});
 
 });
