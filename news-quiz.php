@@ -2,7 +2,7 @@
 /**
  * Plugin Name: News Quizzes
  * Description: Loads a quiz as specified in google drive.
- * Version: 0.5
+ * Version: 1.0
  * Author: Will Haynes for INN, MotherJones
  * License: GPLv2
 */
@@ -14,7 +14,7 @@
  * If it exists, then this shortcode uses the quiz library to insert a quiz into
  * the post.
  *
- * @since 0.1
+ * @since 1.0
  * @param $atts. array. the attributes passed into the shortcode.
  */
 function largo_interactive_quiz_shortcode( $atts ){
@@ -27,23 +27,26 @@ function largo_interactive_quiz_shortcode( $atts ){
  	/* 2: Pull out and sanitize attributes */
 
 	$key = $atts['key'];
-	$title = $atts['title'];
-	$description = $atts['description'];
-	$byline = $atts['byline'];
-	$source = $atts['source'];
-	$layout = $atts['layout'] ? $atts['layout'] : 'fullwidth';
 
-	// make sure layout is valid.
-	if( !in_array( $layout, array('fullwidth','sidebar') ) ) {
+	$title = $atts['title'];
+
+	$description = $atts['description'];
+
+	$byline = $atts['byline'];
+
+	$source = $atts['source'];
+
+	$answerstyle = $atts['answerstyle'] ? $atts['answerstyle'] : 'bullet';
+	if( !in_array( $answerstyle, array('alpha','bullets','roman','numbers') ) ) 
+		$answerstyle = 'bullet';
+
+	$layout = $atts['layout'] ? $atts['layout'] : 'fullwidth';
+	if( !in_array( $layout, array('fullwidth','sidebar') ) ) 
 		$layout = 'fullwidth';
-	}
 
 	$align = $atts['align'] ? $atts['align'] : 'alignnone';
-
-	// make sure align is valid.
-	if( !in_array( $align, array('alignnone','aligncenter','alignright','alignleft') ) ) {
+	if( $layout == 'fullwidth' || !in_array( $align, array('alignnone','aligncenter','alignright','alignleft') ) )
 		$align = 'alignnone';
-	}
 
 	/* 3: Return container */
 	
@@ -57,9 +60,9 @@ function largo_interactive_quiz_shortcode( $atts ){
 
 		$ret .= "<header class='largo-interactive-header'>";
 	
-		if($title)
+		if( $title )
 			$ret .= "<h3 class='largo-interactive-headline'>" . $title . "</h3>";
-		if($description)
+		if( $description )
 			$ret .= "<p class='largo-interactive-lede'>" . $description . "</p>";
 	
 		$ret .= "</header>";
@@ -68,7 +71,8 @@ function largo_interactive_quiz_shortcode( $atts ){
 
 	// .largo-interactive-content
 	$ret .= "<div ";
-		$ret .= "class='largo-interactive-quizbox largo-interactive-content' ";
+		$ret .= "class='largo-interactive-quizbox largo-interactive-content largo-interactive-quizbox-list-$answerstyle' ";
+		$ret .= "id='quizcontainer' ";
 		$ret .= "data-key='$key' ";
 	$ret .= "></div>";
 
@@ -77,10 +81,10 @@ function largo_interactive_quiz_shortcode( $atts ){
 		
 		$ret .= "<div class='largo-interactive-footer'>";
 	
-		if($byline)
+		if( $byline )
 			$ret .= "<span class='largo-interactive-byline'>" . $byline . "</span>";
-		if($source) 
-			$ret .= "<span class='largo-interactive-source" . $source . "</span>";
+		if( $source ) 
+			$ret .= "<span class='largo-interactive-source'>Source: " . $source . "</span>";
 
 		$ret .= "</div>";
 	}
@@ -107,7 +111,7 @@ add_shortcode( 'quiz', 'largo_interactive_quiz_shortcode' );
  * Check to ensure there is a shortcode in the post before
  * loading all of this javascript onto the page.
  *
- * @since 0.1
+ * @since 1.0
  */
 function largo_interactive_quiz_scripts() {
 
