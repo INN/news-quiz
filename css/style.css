@@ -147,6 +147,7 @@
 
 	.largo-interactive-alignleft, .largo-interactive-alignright {
 		float: none; /* not for mobile */
+		margin: 0;
 	}
 	.largo-interactive-sidebar {
 		width: 100%;
