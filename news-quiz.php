@@ -116,7 +116,7 @@ add_shortcode( 'quiz', 'largo_interactive_quiz_shortcode' );
 function largo_interactive_quiz_scripts() {
 
 	/* Styles */
-	wp_register_style( 'quiz_style', plugins_url( 'css/style.css', __FILE__ ), false, '0.1' );
+	wp_register_style( 'quiz_style', plugins_url( 'css/style.css', __FILE__ ), false, '0.2' );
 
 	/* Scripts */
 	wp_register_script( 'tabletop', plugins_url(  'js/tabletop.js', __FILE__ ), array('jquery'), '1.0.0', true );
