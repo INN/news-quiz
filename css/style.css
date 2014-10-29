@@ -112,7 +112,6 @@
 
 .quiz_container img, .quiz_container .youtube, .quiz_container .videoembed  {
 	margin-bottom: 1em !important;
-	min-height: 200px;
 	max-height: 200px;
 }
 
