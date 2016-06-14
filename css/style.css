@@ -1,4 +1,4 @@
-.largo-interactive  {
+.news-quiz  {
 	display: block;
 	padding: 1em 12px;
 	background: #dddddd;
@@ -6,48 +6,48 @@
 
 /* Layout attributes. */
 
-.largo-interactive-sidebar {
+.news-quiz-sidebar {
 	width: 300px;
 }
 
-.largo-interactive-fullwidth {
+.news-quiz-fullwidth {
 	width: 100%;
 }
 
 /* Align attributes. */
 
-.largo-interactive-alignleft {
+.news-quiz-alignleft {
 	float:left;
 	margin: 5px 20px 20px 0;
 }
 
-.largo-interactive-alignright {
+.news-quiz-alignright {
 	float:right;
 	margin: 5px 0 20px 20px;
 }
 
-.largo-interactive-alignnone {
+.news-quiz-alignnone {
 	margin: 5px 20px 20px 0;
 }
 
 /* List attributes. */
 
-.largo-interactive-quizbox-list-alpha .possible_answers {
+.news-quiz-quizbox-list-alpha .possible_answers {
 	list-style-type: lower-alpha;
 	list-style-position: inside;
 }
 
-.largo-interactive-quizbox-list-bullet .possible_answers {
+.news-quiz-quizbox-list-bullet .possible_answers {
 	list-style-type: inherit;
 	list-style-position: inside;
 }
 
-.largo-interactive-quizbox-list-roman .possible_answers {
+.news-quiz-quizbox-list-roman .possible_answers {
 	list-style-type: lower-roman;
 	list-style-position: inside;
 }
 
-.largo-interactive-quizbox-list-number .possible_answers {
+.news-quiz-quizbox-list-number .possible_answers {
 	list-style-type: decimal;
 	list-style-position: inside;
 }
@@ -104,7 +104,7 @@
 	text-decoration: line-through;
 }
 
-.largo-interactive-byline, .largo-interactive-source {
+.news-quiz-byline, .news-quiz-source {
 	display:block;
 }
 
@@ -144,11 +144,11 @@
 
 @media (max-width: 480px) {
 
-	.largo-interactive-alignleft, .largo-interactive-alignright {
+	.news-quiz-alignleft, .news-quiz-alignright {
 		float: none; /* not for mobile */
 		margin: 0;
 	}
-	.largo-interactive-sidebar {
+	.news-quiz-sidebar {
 		width: 100%;
 	}
 

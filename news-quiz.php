@@ -3,7 +3,7 @@
  * Plugin Name: News Quizzes
  * Description: Loads a quiz as specified in google drive.
  * Version: 1.0
- * Author: Will Haynes for INN, MotherJones
+ * Author: The INN Nerds, Will Haynes for INN, Mother Jones
  * License: GPLv2
 */
 
@@ -52,39 +52,39 @@ function largo_interactive_quiz_shortcode( $atts ){
 	
 	$ret  = "";
 
-	// .largo-interactive
-	$ret .= "<aside class='largo-interactive largo-interactive-quiz largo-interactive-$align largo-interactive-$layout'>";
+	// .news-quiz
+	$ret .= "<aside class='news-quiz news-quiz-quiz news-quiz-$align news-quiz-$layout'>";
 
-	// .largo-interactive-header
+	// .news-quiz-header
 	if($description || $title) {
 
-		$ret .= "<header class='largo-interactive-header'>";
+		$ret .= "<header class='news-quiz-header'>";
 	
 		if( $title )
-			$ret .= "<h3 class='largo-interactive-headline'>" . $title . "</h3>";
+			$ret .= "<h3 class='news-quiz-headline'>" . $title . "</h3>";
 		if( $description )
-			$ret .= "<p class='largo-interactive-lede'>" . $description . "</p>";
+			$ret .= "<p class='news-quiz-lede'>" . $description . "</p>";
 	
 		$ret .= "</header>";
 
 	}
 
-	// .largo-interactive-content
+	// .news-quiz-content
 	$ret .= "<div ";
-		$ret .= "class='largo-interactive-quizbox largo-interactive-content largo-interactive-quizbox-list-$answerstyle' ";
+		$ret .= "class='news-quiz-quizbox news-quiz-content news-quiz-quizbox-list-$answerstyle' ";
 		$ret .= "id='quizcontainer' ";
 		$ret .= "data-key='$key' ";
 	$ret .= "></div>";
 
-	// .largo-interactive-footer
+	// .news-quiz-footer
 	if( $byline || $source ) {
 		
-		$ret .= "<div class='largo-interactive-footer'>";
+		$ret .= "<div class='news-quiz-footer'>";
 	
 		if( $byline )
-			$ret .= "<span class='largo-interactive-byline'>" . $byline . "</span>";
+			$ret .= "<span class='news-quiz-byline'>" . $byline . "</span>";
 		if( $source ) 
-			$ret .= "<span class='largo-interactive-source'>Source: " . $source . "</span>";
+			$ret .= "<span class='news-quiz-source'>Source: " . $source . "</span>";
 
 		$ret .= "</div>";
 	}
