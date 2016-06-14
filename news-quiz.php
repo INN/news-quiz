@@ -17,7 +17,7 @@
  * @since 1.0
  * @param $atts. array. the attributes passed into the shortcode.
  */
-function largo_interactive_quiz_shortcode( $atts ){
+function news_quiz_shortcode( $atts ){
 
 	/* 1: Enqueue previously registered scripts (to avoid unnecessary loading). */
 
@@ -94,7 +94,7 @@ function largo_interactive_quiz_shortcode( $atts ){
 	return $ret;
 
 }
-add_shortcode( 'quiz', 'largo_interactive_quiz_shortcode' );
+add_shortcode( 'quiz', 'news_quiz_shortcode' );
 
 
 /**
@@ -113,7 +113,7 @@ add_shortcode( 'quiz', 'largo_interactive_quiz_shortcode' );
  *
  * @since 1.0
  */
-function largo_interactive_quiz_scripts() {
+function news_quiz_scripts() {
 
 	/* Styles */
 	wp_register_style( 'quiz_style', plugins_url( 'css/style.css', __FILE__ ), false, '0.2' );
@@ -124,4 +124,4 @@ function largo_interactive_quiz_scripts() {
 	wp_register_script( 'quiz_js', plugins_url(  'js/wpquiz.js' , __FILE__), array('jquery','quiz_mj_js'), '1.0.1', true );	
 
 }
-add_action( 'wp_enqueue_scripts', 'largo_interactive_quiz_scripts' );
+add_action( 'wp_enqueue_scripts', 'news_quiz_scripts' );
