@@ -42,7 +42,25 @@ This shortcode allows you to embed a news quiz created in accordance with Mother
 
 The quiz comes with a very limited stylesheet by default.
 
+== Screenshots ==
+
+No screenshots at this time.
+
 == Changelog ==
 
+= 0.2 =
+
+- rename CSS classes from `.largo-interactive-` to `.news-quiz-`
+- rename PHP function prefix from `largo_interactive_quiz_` to `news_quiz_`
+
 = 0.1 =
-* Initial release
+
+- Initial release
+
+== Upgrade Notice ==
+
+= 0.2 =
+
+-f you have created styles scoped to `.largo-interactive`, you will need to change them to `.news-quiz`.
+
+If you have created PHP functionality that depends upon the existence of any of the `largo_interactive_quiz_` prefixed functions or actions, you will need to update those to use the `news_quiz_` prefix.
