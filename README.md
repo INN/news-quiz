@@ -43,4 +43,4 @@ Where possible, use these classes to apply styles, ensuring future Largo interac
 
 ## Built by and credits
 
-Built by [Will Haynes](https://github.com/willhaynes) on top of [Mother Jones' newquiz library](https://github.com/motherjones/newsquiz).
+Built by [Will Haynes](https://github.com/willhaynes) on top of [Mother Jones' news quiz library](https://github.com/motherjones/newsquiz).
