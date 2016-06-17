@@ -1,10 +1,10 @@
 === News Quiz Shortcode ===
 Contributors: inn_nerds will_haynes
 Donate link: http://inn.org/donate/
-Tags: quiz, news,
+Tags: quiz, news, shortcode, 
 Requires at least: 4.1
 Tested up to: 4.5.2
-Stable tag: 0.1
+Stable tag: 0.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -40,7 +40,7 @@ This shortcode allows you to embed a news quiz created in accordance with Mother
 
 = How do I style the quiz? =
 
-The quiz comes with a very limited stylesheet by default.
+The quiz comes with a very limited default stylesheet. You can style the quiz by editing your theme's stylesheet.
 
 == Screenshots ==
 
