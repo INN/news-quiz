@@ -1,5 +1,5 @@
 === News Quiz Shortcode ===
-Contributors: inn_nerds will_haynes
+Contributors: inn_nerds, will_haynes
 Donate link: http://inn.org/donate/
 Tags: quiz, news, shortcode, 
 Requires at least: 4.1
