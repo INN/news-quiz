@@ -2,7 +2,7 @@
 /**
  * Plugin Name: News Quizzes
  * Description: Loads a quiz as specified in google drive.
- * Version: 1.0
+ * Version: 0.2.1
  * Author: The INN Nerds, Will Haynes for INN, Mother Jones
  * License: GPLv2
 */
@@ -14,7 +14,7 @@
  * If it exists, then this shortcode uses the quiz library to insert a quiz into
  * the post.
  *
- * @since 1.0
+ * @since 0.1
  * @param $atts. array. the attributes passed into the shortcode.
  */
 function news_quiz_shortcode( $atts ){
@@ -111,7 +111,7 @@ add_shortcode( 'quiz', 'news_quiz_shortcode' );
  * Check to ensure there is a shortcode in the post before
  * loading all of this javascript onto the page.
  *
- * @since 1.0
+ * @since 0.1
  */
 function news_quiz_scripts() {
 
