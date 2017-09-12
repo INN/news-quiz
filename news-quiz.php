@@ -17,14 +17,14 @@
  * @since 0.1
  * @param $atts. array. the attributes passed into the shortcode.
  */
-function news_quiz_shortcode( $atts ){
+function news_quiz_shortcode( $atts ) {
 
 	/* 1: Enqueue previously registered scripts (to avoid unnecessary loading). */
 
-	wp_enqueue_style(  'quiz_style' );
+	wp_enqueue_style( 'quiz_style' );
 	wp_enqueue_script( 'quiz_js' );
-	
- 	/* 2: Pull out and sanitize attributes */
+
+		/* 2: Pull out and sanitize attributes */
 
 	$key = $atts['key'];
 
@@ -37,60 +37,67 @@ function news_quiz_shortcode( $atts ){
 	$source = $atts['source'];
 
 	$answerstyle = $atts['answerstyle'] ? $atts['answerstyle'] : 'bullet';
-	if( !in_array( $answerstyle, array('alpha','bullets','roman','numbers') ) ) 
+	if ( ! in_array( $answerstyle, array( 'alpha', 'bullets', 'roman', 'numbers' ), true ) ) {
 		$answerstyle = 'bullet';
+	}
 
 	$layout = $atts['layout'] ? $atts['layout'] : 'fullwidth';
-	if( !in_array( $layout, array('fullwidth','sidebar') ) ) 
+	if ( ! in_array( $layout, array( 'fullwidth', 'sidebar' ), true ) ) {
 		$layout = 'fullwidth';
+	}
 
 	$align = $atts['align'] ? $atts['align'] : 'alignnone';
-	if( $layout == 'fullwidth' || !in_array( $align, array('alignnone','aligncenter','alignright','alignleft') ) )
+	if ( 'fullwidth' === $layout || ! in_array( $align, array( 'alignnone', 'aligncenter', 'alignright', 'alignleft' ), true ) ) {
 		$align = 'alignnone';
+	}
 
 	/* 3: Return container */
-	
-	$ret  = "";
+
+	$ret  = '';
 
 	// .news-quiz
 	$ret .= "<aside class='news-quiz news-quiz-quiz news-quiz-$align news-quiz-$layout'>";
 
 	// .news-quiz-header
-	if($description || $title) {
+	if ( $description || $title ) {
 
 		$ret .= "<header class='news-quiz-header'>";
-	
-		if( $title )
-			$ret .= "<h3 class='news-quiz-headline'>" . $title . "</h3>";
-		if( $description )
-			$ret .= "<p class='news-quiz-lede'>" . $description . "</p>";
-	
-		$ret .= "</header>";
+
+		if ( $title ) {
+			$ret .= "<h3 class='news-quiz-headline'>" . $title . '</h3>';
+		}
+		if ( $description ) {
+			$ret .= "<p class='news-quiz-lede'>" . $description . '</p>';
+		}
+
+		$ret .= '</header>';
 
 	}
 
 	// .news-quiz-content
-	$ret .= "<div ";
+	$ret .= '<div ';
 		$ret .= "class='news-quiz-quizbox news-quiz-content news-quiz-quizbox-list-$answerstyle' ";
 		$ret .= "id='quizcontainer' ";
 		$ret .= "data-key='$key' ";
-	$ret .= "></div>";
+	$ret .= '></div>';
 
 	// .news-quiz-footer
-	if( $byline || $source ) {
-		
-		$ret .= "<div class='news-quiz-footer'>";
-	
-		if( $byline )
-			$ret .= "<span class='news-quiz-byline'>" . $byline . "</span>";
-		if( $source ) 
-			$ret .= "<span class='news-quiz-source'>Source: " . $source . "</span>";
+	if ( $byline || $source ) {
 
-		$ret .= "</div>";
+		$ret .= "<div class='news-quiz-footer'>";
+
+		if ( $byline ) {
+			$ret .= "<span class='news-quiz-byline'>" . $byline . '</span>';
+		}
+		if ( $source ) {
+			$ret .= "<span class='news-quiz-source'>Source: " . $source . '</span>';
+		}
+
+		$ret .= '</div>';
 	}
 
-	$ret .= "</aside>";
-	
+	$ret .= '</aside>';
+
 	return $ret;
 
 }
@@ -119,9 +126,9 @@ function news_quiz_scripts() {
 	wp_register_style( 'quiz_style', plugins_url( 'css/style.css', __FILE__ ), false, '0.2' );
 
 	/* Scripts */
-	wp_register_script( 'tabletop', plugins_url(  'js/tabletop.js', __FILE__ ), array('jquery'), '1.0.0', true );
-	wp_register_script( 'quiz_mj_js', plugins_url(  'js/newsquiz.min.js' , __FILE__), array('jquery','tabletop'), '1.0.0', true );
-	wp_register_script( 'quiz_js', plugins_url(  'js/wpquiz.js' , __FILE__), array('jquery','quiz_mj_js'), '1.0.1', true );	
+	wp_register_script( 'tabletop', plugins_url( 'js/tabletop.js', __FILE__ ), array( 'jquery' ), '1.0.0', true );
+	wp_register_script( 'quiz_mj_js', plugins_url( 'js/newsquiz.min.js' , __FILE__ ), array( 'jquery', 'tabletop' ), '1.0.0', true );
+	wp_register_script( 'quiz_js', plugins_url( 'js/wpquiz.js' , __FILE__ ), array( 'jquery', 'quiz_mj_js' ), '1.0.1', true );
 
 }
 add_action( 'wp_enqueue_scripts', 'news_quiz_scripts' );
