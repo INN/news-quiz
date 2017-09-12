@@ -23,7 +23,7 @@ function news_quiz_shortcode( $atts ){
 
 	wp_enqueue_style(  'quiz_style' );
 	wp_enqueue_script( 'quiz_js' );
-	
+
  	/* 2: Pull out and sanitize attributes */
 
 	$key = $atts['key'];
@@ -37,11 +37,11 @@ function news_quiz_shortcode( $atts ){
 	$source = $atts['source'];
 
 	$answerstyle = $atts['answerstyle'] ? $atts['answerstyle'] : 'bullet';
-	if( !in_array( $answerstyle, array('alpha','bullets','roman','numbers') ) ) 
+	if( !in_array( $answerstyle, array('alpha','bullets','roman','numbers') ) )
 		$answerstyle = 'bullet';
 
 	$layout = $atts['layout'] ? $atts['layout'] : 'fullwidth';
-	if( !in_array( $layout, array('fullwidth','sidebar') ) ) 
+	if( !in_array( $layout, array('fullwidth','sidebar') ) )
 		$layout = 'fullwidth';
 
 	$align = $atts['align'] ? $atts['align'] : 'alignnone';
@@ -49,7 +49,7 @@ function news_quiz_shortcode( $atts ){
 		$align = 'alignnone';
 
 	/* 3: Return container */
-	
+
 	$ret  = "";
 
 	// .news-quiz
@@ -59,12 +59,12 @@ function news_quiz_shortcode( $atts ){
 	if($description || $title) {
 
 		$ret .= "<header class='news-quiz-header'>";
-	
+
 		if( $title )
 			$ret .= "<h3 class='news-quiz-headline'>" . $title . "</h3>";
 		if( $description )
 			$ret .= "<p class='news-quiz-lede'>" . $description . "</p>";
-	
+
 		$ret .= "</header>";
 
 	}
@@ -78,19 +78,19 @@ function news_quiz_shortcode( $atts ){
 
 	// .news-quiz-footer
 	if( $byline || $source ) {
-		
+
 		$ret .= "<div class='news-quiz-footer'>";
-	
+
 		if( $byline )
 			$ret .= "<span class='news-quiz-byline'>" . $byline . "</span>";
-		if( $source ) 
+		if( $source )
 			$ret .= "<span class='news-quiz-source'>Source: " . $source . "</span>";
 
 		$ret .= "</div>";
 	}
 
 	$ret .= "</aside>";
-	
+
 	return $ret;
 
 }
@@ -107,21 +107,19 @@ add_shortcode( 'quiz', 'news_quiz_shortcode' );
  *  - quiz_mj_js (js)	Mother Jones' javascript library.
  *  - quiz_js (js)		Our jquery wrapper for Mother Jones.
  *
- * TODO:
- * Check to ensure there is a shortcode in the post before
- * loading all of this javascript onto the page.
- *
  * @since 0.1
  */
 function news_quiz_scripts() {
+	global $post;
 
-	/* Styles */
-	wp_register_style( 'quiz_style', plugins_url( 'css/style.css', __FILE__ ), false, '0.2' );
+	if ( is_single() && has_shortcode( $post->post_content, 'quiz' ) ) {
+		/* Styles */
+		wp_register_style( 'quiz_style', plugins_url( 'css/style.css', __FILE__ ), false, '0.2' );
 
-	/* Scripts */
-	wp_register_script( 'tabletop', plugins_url(  'js/tabletop.js', __FILE__ ), array('jquery'), '1.0.0', true );
-	wp_register_script( 'quiz_mj_js', plugins_url(  'js/newsquiz.min.js' , __FILE__), array('jquery','tabletop'), '1.0.0', true );
-	wp_register_script( 'quiz_js', plugins_url(  'js/wpquiz.js' , __FILE__), array('jquery','quiz_mj_js'), '1.0.1', true );	
-
+		/* Scripts */
+		wp_register_script( 'tabletop', plugins_url( 'js/tabletop.js', __FILE__ ), array( 'jquery' ), '1.0.0', true );
+		wp_register_script( 'quiz_mj_js', plugins_url( 'js/newsquiz.min.js' , __FILE__ ), array( 'jquery', 'tabletop' ), '1.0.0', true );
+		wp_register_script( 'quiz_js', plugins_url( 'js/wpquiz.js' , __FILE__ ), array( 'jquery', 'quiz_mj_js' ), '1.0.1', true );
+	}
 }
 add_action( 'wp_enqueue_scripts', 'news_quiz_scripts' );
