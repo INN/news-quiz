@@ -98,7 +98,6 @@
 }
 
 .quiz_container .wrong_answer {
-	color: #a4a4a4;
 	cursor: pointer;
 	font-style: italic;
 	text-decoration: line-through;
@@ -139,6 +138,13 @@
     height: 100%;
     width: 100%;
 } 
+
+.quiz_container .wrong_answer, .quiz_container .correct_answer {
+	opacity: .4;
+}
+.quiz_container .selected {
+	opacity: 1;
+}
 
 /* media queries */
 
